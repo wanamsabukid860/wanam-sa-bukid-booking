@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wanam Sa Bukid - Booking System</title>
+    <link rel="stylesheet" href="bookingweb.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo-container">
+                <img src="logowanam.png" alt="Wanam Sa Bukid Logo" class="logo-image">
+                <div class="logo-text">
+                    <h1>WANAM SA BUKID</h1>
+                    <p>RESTAURANT & EVENT HALL</p>
+                    <p class="est">EST.2000</p>
+                </div>
+            </div>
+            <div class="auth-buttons">
+                <button id="login-btn" class="auth-btn">Login</button>
+                <button id="signup-btn" class="auth-btn">Sign Up</button>
+            </div>
+        </header>
+
+        <!-- Authentication Modal -->
+        <div id="auth-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="auth-tabs">
+                    <button class="tab-btn active" data-tab="login">Login</button>
+                    <button class="tab-btn" data-tab="signup">Sign Up</button>
+                </div>
+                
+                <!-- Login Form -->
+                <form id="login-form" class="auth-form active">
+                    <h2>Login to Your Account</h2>
+                    <div class="form-group">
+                        <label for="login-contact">Email</label>
+                        <input type="text" id="login-contact" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <!-- Data Privacy Notice for Login -->
+                    <div class="privacy-notice">
+                        <p><small>By logging in, you acknowledge that you have read and understood our <a href="https://privacy.gov.ph/data-privacy-act/" id="privacy-link-login" class="privacy-link">Data Privacy Policy</a> in accordance with Republic Act 10173 (Data Privacy Act of 2012).</small></p>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Login</button>
+                </form>
+                
+                <!-- Signup Form -->
+                <form id="signup-form" class="auth-form">
+                    <h2>Create an Account</h2>
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthday">Birthday</label>
+                        <input type="date" id="birthday" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Contact Number</label>
+                        <input type="text" id="contact" placeholder="Enter your contact number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Create a password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+                    </div>
+                    
+                    <!-- Data Privacy Consent Checkbox - REQUIRED -->
+                    <div class="privacy-consent">
+                        <div class="privacy-consent-header">
+                            <h4>⚠️ Required: Data Privacy Consent</h4>
+                            <p class="consent-notice">You must agree to our privacy policy to create an account</p>
+                        </div>
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="privacy-consent" required>
+                            <span class="checkmark"></span>
+                            <span class="privacy-text">
+                                <span class="required-indicator">* </span>I have read and agree to the <a href="https://privacy.gov.ph/data-privacy-act/" id="privacy-link-signup" class="privacy-link">Data Privacy Policy</a> and consent to the collection, use, and processing of my personal information in accordance with <strong>Republic Act 10173 - Data Privacy Act of 2012</strong>.
+                            </span>
+                        </label>
+                        <p class="privacy-required-note"><small><em>* This field is required to create an account</em></small></p>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Create Account</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Data Privacy Policy Modal -->
+        <div id="privacy-modal" class="modal">
+            <div class="modal-content privacy-modal-content">
+                <span class="close">&times;</span>
+                <h2>Data Privacy Policy</h2>
+                <div class="privacy-content">
+                    <h3>Republic Act 10173 - Data Privacy Act of 2012</h3>
+                    
+                    <h4>1. Collection of Personal Information</h4>
+                    <p>Wanam Sa Bukid Restaurant collects and processes your personal information including but not limited to:</p>
+                    <ul>
+                        <li>Full name</li>
+                        <li>Contact number</li>
+                        <li>Email address</li>
+                        <li>Birthday</li>
+                        <li>Booking and reservation details</li>
+                        <li>Payment information</li>
+                    </ul>
+                    
+                    <h4>2. Purpose of Data Collection</h4>
+                    <p>Your personal information is collected for the following purposes:</p>
+                    <ul>
+                        <li>Processing of bookings and reservations</li>
+                        <li>Customer service and support</li>
+                        <li>Payment processing and verification</li>
+                        <li>Marketing communications (with your consent)</li>
+                        <li>Compliance with legal obligations</li>
+                    </ul>
+                    
+                    <h4>3. Data Security</h4>
+                    <p>We implement appropriate security measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. Your data is stored securely and accessed only by authorized personnel.</p>
+                    
+                    <h4>4. Your Rights</h4>
+                    <p>Under the Data Privacy Act of 2012, you have the right to:</p>
+                    <ul>
+                        <li>Be informed about the collection and processing of your personal data</li>
+                        <li>Access your personal data</li>
+                        <li>Object to the processing of your personal data</li>
+                        <li>Request correction of inaccurate or incomplete data</li>
+                        <li>Request erasure or blocking of your personal data</li>
+                        <li>Withdraw consent at any time</li>
+                    </ul>
+                    
+                    <h4>5. Data Retention</h4>
+                    <p>We retain your personal information only for as long as necessary to fulfill the purposes for which it was collected, or as required by law.</p>
+                    
+                    <h4>6. Data Sharing</h4>
+                    <p>We do not sell, trade, or transfer your personal information to third parties without your consent, except as required by law or for the fulfillment of our services (e.g., payment processors).</p>
+                    
+                    <h4>7. Contact Us</h4>
+                    <p>For questions, concerns, or requests regarding your personal data, please contact:</p>
+                    <p><strong>Wanam Sa Bukid Restaurant</strong><br>
+                    Data Protection Officer<br>
+                    Email: privacy@wanamsabukid.com<br>
+                    Phone: [Contact Number]</p>
+                    
+                    <h4>8. Updates to Privacy Policy</h4>
+                    <p>We may update this privacy policy from time to time. Any changes will be posted on this page and will be effective immediately upon posting.</p>
+                    
+                    <p class="privacy-footer"><em>Last updated: October 2025</em></p>
+                </div>
+                <button class="submit-btn" id="close-privacy">I Understand</button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="booking-container">
+            <!-- User Info Section (Visible when logged in) -->
+            <section id="user-info" class="section hidden">
+                <h2>Personal Information</h2>
+                <div class="user-details">
+                    <div class="info-item">
+                        <span class="label">Full Name:</span>
+                        <span id="user-fullname">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Birthday:</span>
+                        <span id="user-birthday">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Contact Number:</span>
+                        <span id="user-contact">-</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">Email:</span>
+                        <span id="user-email">-</span>
+                    </div>
+                </div>
+                <button id="edit-profile" class="edit-btn">Edit Profile</button>
+            </section>
+            
+            
+
+            <!-- Booking Type Selection -->
+            <section id="booking-type" class="section">
+                <h2>Book Your Experience</h2>
+                <div class="booking-options">
+                    <div class="booking-option" data-type="event-hall">
+                        <i class="fas fa-glass-cheers"></i>
+                        <h3>Event Hall</h3>
+                        <p>Book our event hall for special occasions</p>
+                    </div>
+                    <div class="booking-option" data-type="dine-in">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Dine-In Reservation</h3>
+                        <p>Reserve tables and pre-order food</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Event Hall Booking Form -->
+            <section id="event-hall-form" class="booking-form hidden">
+                <h2>Event Hall Booking</h2>
+                <form id="event-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="event-type">Event Type</label>
+                            <select id="event-type" required>
+                                <option value="">Select event type</option>
+                                <option value="wedding">Wedding</option>
+                                <option value="birthday">Birthday Party</option>
+                                <option value="corporate">Corporate Event</option>
+                                <option value="reunion">Family Reunion</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="event-date">Event Date</label>
+                            <input type="date" id="event-date" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="start-time">Start Time</label>
+                            <input type="time" id="start-time" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="end-time">End Time</label>
+                            <input type="time" id="end-time" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="guest-count">Expected Number of Guests</label>
+                            <input type="number" id="guest-count" min="1" placeholder="Enter number of guests" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="special-requests">Special Requests or Notes</label>
+                        <textarea id="special-requests" rows="4" placeholder="Any special requirements or requests?"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="back-btn">Back</button>
+                        <button type="submit" class="submit-btn">Proceed to Payment</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Dine-In Reservation Form -->
+            <section id="dine-in-form" class="booking-form hidden">
+                <h2>Dine-In Reservation</h2>
+                <form id="reservation-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="reservation-date">Reservation Date</label>
+                            <input type="date" id="reservation-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="reservation-time">Estimated Time of Arrival</label>
+                            <input type="time" id="reservation-time" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="party-size">Party Size</label>
+                            <input type="number" id="party-size" min="1" placeholder="Number of people" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="table-preference">Table Preference</label>
+                            <select id="table-preference">
+                                <option value="any">For 1</option>
+                                <option value="indoor">For 2</option>
+                                <option value="outdoor">For 3</option>
+                                <option value="private">For more than 4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="occasion">Special Occasion (Optional)</label>
+                        <input type="text" id="occasion" placeholder="e.g., Birthday, Anniversary">
+                    </div>
+                    
+                    <h3>Pre-Order Food (Optional)</h3>
+                    <div class="menu-section">
+                        <div class="menu-categories-booking">
+                            <button type="button" class="menu-category-btn active" data-category="ala-carte">Ala Carte</button>
+                            <button type="button" class="menu-category-btn" data-category="favorites">Favorites</button>
+                            <button type="button" class="menu-category-btn" data-category="beverages">Beverages</button>
+                            <button type="button" class="menu-category-btn" data-category="desserts-menu">Desserts</button>
+                        </div>
+
+                        <!-- Ala Carte Category -->
+                        <div class="menu-category active" data-category="ala-carte">
+                            <div class="subcategory-buttons">
+                                <button type="button" class="sub-category-btn active" data-subcategory="chicken">Chicken</button>
+                                <button type="button" class="sub-category-btn" data-subcategory="pork">Pork</button>
+                                <button type="button" class="sub-category-btn" data-subcategory="beef">Beef</button>
+                                <button type="button" class="sub-category-btn" data-subcategory="seafood">Seafood</button>
+                                <button type="button" class="sub-category-btn" data-subcategory="breakfast">Breakfast</button>
+                            </div>
+
+                            <!-- Chicken Subcategory -->
+                            <div class="sub-menu-category active" data-subcategory="chicken">
+                                <div class="menu-item" data-item="WaNam Fried Chicken (Half)" data-price="280.00">
+                                    <div class="item-info">
+                                        <h4>WaNam Fried Chicken (Half)</h4>
+                                        <p>Crispy and flavorful fried chicken</p>
+                                        <span class="price">₱280.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="menu-item" data-item="WaNam Fried Chicken (Whole)" data-price="550.00">
+                                    <div class="item-info">
+                                        <h4>WaNam Fried Chicken (Whole)</h4>
+                                        <p>Crispy and flavorful fried chicken</p>
+                                        <span class="price">₱550.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Chicken Asado (Half)" data-price="260.00">
+                                    <div class="item-info">
+                                        <h4>Chicken Asado (Half)</h4>
+                                        <p>Savory chicken asado</p>
+                                        <span class="price">₱260.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Chicken Asado (Whole)" data-price="520.00">
+                                    <div class="item-info">
+                                        <h4>Chicken Asado (Whole)</h4>
+                                        <p>Savory chicken asado</p>
+                                        <span class="price">₱520.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Crispy Chicken (Half)" data-price="300.00">
+                                    <div class="item-info">
+                                        <h4>Crispy Chicken (Half)</h4>
+                                        <p>Extra crispy fried chicken</p>
+                                        <span class="price">₱300.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Crispy Chicken (Whole)" data-price="580.00">
+                                    <div class="item-info">
+                                        <h4>Crispy Chicken (Whole)</h4>
+                                        <p>Extra crispy fried chicken</p>
+                                        <span class="price">₱580.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Chopped Chicken (Half)" data-price="300.00">
+                                    <div class="item-info">
+                                        <h4>Chopped Chicken (Half)</h4>
+                                        <p>Chopped chicken dish</p>
+                                        <span class="price">₱300.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Chopped Chicken (Whole)" data-price="600.00">
+                                    <div class="item-info">
+                                        <h4>Chopped Chicken (Whole)</h4>
+                                        <p>Chopped chicken dish</p>
+                                        <span class="price">₱600.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Chicken Hongkong Style (Half)" data-price="350.00">
+                                    <div class="item-info">
+                                        <h4>Chicken Hongkong Style (Half)</h4>
+                                        <p>Hongkong style chicken</p>
+                                        <span class="price">₱350.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Chicken Hongkong Style (Whole)" data-price="700.00">
+                                    <div class="item-info">
+                                        <h4>Chicken Hongkong Style (Whole)</h4>
+                                        <p>Hongkong style chicken</p>
+                                        <span class="price">₱700.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Chicken Chopsuey" data-price="320.00">
+                                    <div class="item-info">
+                                        <h4>Chicken Chopsuey</h4>
+                                        <p>Chicken with mixed vegetables</p>
+                                        <span class="price">₱320.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pork Subcategory -->
+                            <div class="sub-menu-category" data-subcategory="pork">
+                                <div class="menu-item" data-item="Lumpiang Shanghai (Half)" data-price="180.00">
+                                    <div class="item-info">
+                                        <h4>Lumpiang Shanghai (Half)</h4>
+                                        <p>Pork spring rolls</p>
+                                        <span class="price">₱180.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Lumpiang Shanghai (Whole)" data-price="350.00">
+                                    <div class="item-info">
+                                        <h4>Lumpiang Shanghai (Whole)</h4>
+                                        <p>Pork spring rolls</p>
+                                        <span class="price">₱350.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Pork Asado (Half)" data-price="180.00">
+                                    <div class="item-info">
+                                        <h4>Pork Asado (Half)</h4>
+                                        <p>Savory pork asado</p>
+                                        <span class="price">₱180.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Pork Asado (Whole)" data-price="350.00">
+                                    <div class="item-info">
+                                        <h4>Pork Asado (Whole)</h4>
+                                        <p>Savory pork asado</p>
+                                        <span class="price">₱350.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Sweet & Sour Pork (Half)" data-price="320.00">
+                                    <div class="item-info">
+                                        <h4>Sweet & Sour Pork (Half)</h4>
+                                        <p>Sweet and sour pork</p>
+                                        <span class="price">₱320.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Sweet & Sour Pork (Whole)" data-price="320.00">
+                                    <div class="item-info">
+                                        <h4>Sweet & Sour Pork (Whole)</h4>
+                                        <p>Sweet and sour pork</p>
+                                        <span class="price">₱320.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Lechon Kawali (Half)" data-price="320.00">
+                                    <div class="item-info">
+                                        <h4>Lechon Kawali (Half)</h4>
+                                        <p>Crispy fried pork belly</p>
+                                        <span class="price">₱320.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Lechon Kawali (Whole)" data-price="360.00">
+                                    <div class="item-info">
+                                        <h4>Lechon Kawali (Whole)</h4>
+                                        <p>Crispy fried pork belly</p>
+                                        <span class="price">₱360.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Lechon Kare-Kare (Half)" data-price="480.00">
+                                    <div class="item-info">
+                                        <h4>Lechon Kare-Kare (Half)</h4>
+                                        <p>Pork with peanut sauce</p>
+                                        <span class="price">₱480.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Lechon Kare-Kare (Whole)" data-price="880.00">
+                                    <div class="item-info">
+                                        <h4>Lechon Kare-Kare (Whole)</h4>
+                                        <p>Pork with peanut sauce</p>
+                                        <span class="price">₱880.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Lechon Baka" data-price="380.00">
+                                    <div class="item-info">
+                                        <h4>Lechon Baka</h4>
+                                        <p>Roasted beef</p>
+                                        <span class="price">₱380.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Sisig Lechon" data-price="350.00">
+                                    <div class="item-info">
+                                        <h4>Sisig Lechon</h4>
+                                        <p>Sizzling lechon sisig</p>
+                                        <span class="price">₱350.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Crispy Pata" data-price="450.00">
+                                    <div class="item-info">
+                                        <h4>Crispy Pata</h4>
+                                        <p>Deep-fried pork knuckles</p>
+                                        <span class="price">₱450.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Sinigang na Baboy" data-price="320.00">
+                                    <div class="item-info">
+                                        <h4>Sinigang na Baboy</h4>
+                                        <p>Pork in tamarind soup</p>
+                                        <span class="price">₱320.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Beef Subcategory -->
+                            <div class="sub-menu-category" data-subcategory="beef">
+                                <div class="menu-item" data-item="Beef Steak" data-price="480.00">
+                                    <div class="item-info">
+                                        <h4>Beef Steak</h4>
+                                        <p>Tender beef steak</p>
+                                        <span class="price">₱480.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Beef Caldereta" data-price="420.00">
+                                    <div class="item-info">
+                                        <h4>Beef Caldereta</h4>
+                                        <p>Beef in tomato sauce</p>
+                                        <span class="price">₱420.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Beef Broccoli" data-price="380.00">
+                                    <div class="item-info">
+                                        <h4>Beef Broccoli</h4>
+                                        <p>Beef with broccoli in oyster sauce</p>
+                                        <span class="price">₱380.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Beef Kare-Kare" data-price="450.00">
+                                    <div class="item-info">
+                                        <h4>Beef Kare-Kare</h4>
+                                        <p>Beef in peanut sauce</p>
+                                        <span class="price">₱450.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Seafood Subcategory -->
+                            <div class="sub-menu-category" data-subcategory="seafood">
+                                <div class="menu-item" data-item="Calamares" data-price="220.00">
+                                    <div class="item-info">
+                                        <h4>Calamares</h4>
+                                        <p>Crispy fried squid rings</p>
+                                        <span class="price">₱220.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Fish Fillet" data-price="280.00">
+                                    <div class="item-info">
+                                        <h4>Fish Fillet</h4>
+                                        <p>Breaded fish fillet</p>
+                                        <span class="price">₱280.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Grilled Bangus" data-price="300.00">
+                                    <div class="item-info">
+                                        <h4>Grilled Bangus</h4>
+                                        <p>Grilled milkfish</p>
+                                        <span class="price">₱300.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Shrimp Tempura" data-price="350.00">
+                                    <div class="item-info">
+                                        <h4>Shrimp Tempura</h4>
+                                        <p>Crispy shrimp tempura</p>
+                                        <span class="price">₱350.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Breakfast Subcategory -->
+                            <div class="sub-menu-category" data-subcategory="breakfast">
+                                <div class="menu-item" data-item="Tapsilog" data-price="180.00">
+                                    <div class="item-info">
+                                        <h4>Tapsilog</h4>
+                                        <p>Beef tapa, sinangag, itlog</p>
+                                        <span class="price">₱180.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Longsilog" data-price="160.00">
+                                    <div class="item-info">
+                                        <h4>Longsilog</h4>
+                                        <p>Longganisa, sinangag, itlog</p>
+                                        <span class="price">₱160.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Bangsilog" data-price="170.00">
+                                    <div class="item-info">
+                                        <h4>Bangsilog</h4>
+                                        <p>Bangus, sinangag, itlog</p>
+                                        <span class="price">₱170.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+
+                                <div class="menu-item" data-item="Tosilog" data-price="150.00">
+                                    <div class="item-info">
+                                        <h4>Tosilog</h4>
+                                        <p>Tocino, sinangag, itlog</p>
+                                        <span class="price">₱150.00</span>
+                                    </div>
+                                    <div class="item-controls">
+                                        <button type="button" class="quantity-btn minus">-</button>
+                                        <span class="quantity">0</span>
+                                        <button type="button" class="quantity-btn plus">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Favorites Category -->
+                        <div class="menu-category" data-category="favorites">
+                            <div class="menu-item" data-item="Combo Meal A" data-price="450.00">
+                                <div class="item-info">
+                                    <h4>Combo Meal A</h4>
+                                    <p>Chicken + Pork + Rice + Drink</p>
+                                    <span class="price">₱450.00</span>
+                                </div>
+                                <div class="item-controls">
+                                    <button type="button" class="quantity-btn minus">-</button>
+                                    <span class="quantity">0</span>
+                                    <button type="button" class="quantity-btn plus">+</button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-item="Combo Meal B" data-price="550.00">
+                                <div class="item-info">
+                                    <h4>Combo Meal B</h4>
+                                    <p>Beef + Seafood + Rice + Drink</p>
+                                    <span class="price">₱550.00</span>
+                                </div>
+                                <div class="item-controls">
+                                    <button type="button" class="quantity-btn minus">-</button>
+                                    <span class="quantity">0</span>
+                                    <button type="button" class="quantity-btn plus">+</button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-item="Family Bundle" data-price="1200.00">
+                                <div class="item-info">
+                                    <h4>Family Bundle</h4>
+                                    <p>Mixed platter for 4-5 persons</p>
+                                    <span class="price">₱1200.00</span>
+                                </div>
+                                <div class="item-controls">
+                                    <button type="button" class="quantity-btn minus">-</button>
+                                    <span class="quantity">0</span>
+                                    <button type="button" class="quantity-btn plus">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Beverages Category -->
+                        <div class="menu-category" data-category="beverages">
+                            <div class="menu-item" data-item="Calamansi Juice" data-price="60.00">
+                                <div class="item-info">
+                                    <h4>Calamansi Juice</h4>
+                                    <p>Fresh calamansi juice</p>
+                                    <span class="price">₱60.00</span>
+                                </div>
+                                <div class="item-controls">
+                                    <button type="button" class="quantity-btn minus">-</button>
+                                    <span class="quantity">0</span>
+                                    <button type="button" class="quantity-btn plus">+</button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-item="Mango Shake" data-price="80.00">
+                                <div class="item-info">
+                                    <h4>Mango Shake</h4>
+                                    <p>Fresh mango smoothie</p>
+                                    <span class="price">₱80.00</span>
+                                </div>
+                                <div class="item-controls">
+                                    <button type="button" class="quantity-btn minus">-</button>
+                                    <span class="quantity">0</span>
+                                    <button type="button" class="quantity-btn plus">+</button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-item="Iced Tea" data-price="50.00">
+                                <div class="item-info">
+                                    <h4>Iced Tea</h4>
+                                    <p>Refreshing iced tea</p>
+                                    <span class="price">₱50.00</span>
+                                </div>
+                                <div class="item-controls">
+                                    <button type="button" class="quantity-btn minus">-</button>
+                                    <span class="quantity">0</span>
+                                    <button type="button" class="quantity-btn plus">+</button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-item="Soft Drinks" data-price="40.00">
+                                <div class="item-info">
+                                    <h4>Soft Drinks</h4>
+                                    <p>Coke, Sprite, Royal</p>
+                                    <span class="price">₱40.00</span>
+                                </div>
+                                <div class="item-controls">
+                                    <button type="button" class="quantity-btn minus">-</button>
+                                    <span class="quantity">0</span>
+                                    <button type="button" class="quantity-btn plus">+</button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-item="Bottled Water" data-price="25.00">
+                                <div class="item-info">
+                                    <h4>Bottled Water</h4>
+                                    <p>500ml bottled water</p>
+                                    <span class="price">₱25.00</span>
+                                </div>
+                                <div class="item-controls">
+                                    <button type="button" class="quantity-btn minus">-</button>
+                                    <span class="quantity">0</span>
+                                    <button type="button" class="quantity-btn plus">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Desserts Category -->
+                        <div class="menu-category" data-category="desserts-menu">
+                            <div class="menu-item" data-item="Halo-Halo" data-price="120.00">
+                                <div class="item-info">
+                                    <h4>Halo-Halo</h4>
+                                    <p>Mixed shaved ice dessert</p>
+                                    <span class="price">₱120.00</span>
+                                </div>
+                                <div class="item-controls">
+                                    <button type="button" class="quantity-btn minus">-</button>
+                                    <span class="quantity">0</span>
+                                    <button type="button" class="quantity-btn plus">+</button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-item="Leche Flan" data-price="150.00">
+                                <div class="item-info">
+                                    <h4>Leche Flan</h4>
+                                    <p>Creamy caramel custard</p>
+                                    <span class="price">₱150.00</span>
+                                </div>
+                                <div class="item-controls">
+                                    <button type="button" class="quantity-btn minus">-</button>
+                                    <span class="quantity">0</span>
+                                    <button type="button" class="quantity-btn plus">+</button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-item="Buko Pandan" data-price="100.00">
+                                <div class="item-info">
+                                    <h4>Buko Pandan</h4>
+                                    <p>Young coconut and pandan dessert</p>
+                                    <span class="price">₱100.00</span>
+                                </div>
+                                <div class="item-controls">
+                                    <button type="button" class="quantity-btn minus">-</button>
+                                    <span class="quantity">0</span>
+                                    <button type="button" class="quantity-btn plus">+</button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-item="Mais Con Yelo" data-price="90.00">
+                                <div class="item-info">
+                                    <h4>Mais Con Yelo</h4>
+                                    <p>Sweet corn with shaved ice</p>
+                                    <span class="price">₱90.00</span>
+                                </div>
+                                <div class="item-controls">
+                                    <button type="button" class="quantity-btn minus">-</button>
+                                    <span class="quantity">0</span>
+                                    <button type="button" class="quantity-btn plus">+</button>
+                                </div>
+                            </div>
+
+                            <div class="menu-item" data-item="Fruit Salad" data-price="110.00">
+                                <div class="item-info">
+                                    <h4>Fruit Salad</h4>
+                                    <p>Mixed fruit salad with cream</p>
+                                    <span class="price">₱110.00</span>
+                                </div>
+                                <div class="item-controls">
+                                    <button type="button" class="quantity-btn minus">-</button>
+                                    <span class="quantity">0</span>
+                                    <button type="button" class="quantity-btn plus">+</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="order-summary">
+                            <h4>Pre-Order Summary</h4>
+                            <div id="order-items">
+                                <!-- Order items will be populated here -->
+                            </div>
+                            <div class="order-total">
+                                <span>Total: ₱<span id="order-total-amount">0.00</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="back-btn">Back</button>
+                        <button type="submit" class="submit-btn">Proceed to Payment</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Payment Section -->
+            <section id="payment-section" class="booking-form hidden">
+                <h2>Payment Details</h2>
+                <div class="booking-summary">
+                    <h3>Booking Summary</h3>
+                    <div id="booking-details">
+                        <!-- Booking details will be populated here -->
+                    </div>
+                    <div class="payment-info">
+                        <p><strong>Booking ID:</strong> <span id="booking-id">-</span></p>
+                        <p><strong>Payment Deadline:</strong> <span id="payment-deadline">-</span></p>
+                        <p><strong>Total Amount:</strong> ₱<span id="total-amount">0.00</span></p>
+                        <p><strong>Downpayment Required (50%):</strong> ₱<span id="downpayment-amount">0.00</span></p>
+                    </div>
+                </div>
+                
+                <div class="payment-methods">
+                    <h3>Payment Method</h3>
+                    <div class="payment-options">
+                        <div class="payment-option">
+                            <input type="radio" id="gcash" name="payment-method" value="gcash">
+                            <label for="gcash">
+                                <i class="fas fa-mobile-alt"></i>
+                                <span>GCash</span>
+                            </label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" id="paymaya" name="payment-method" value="paymaya">
+                            <label for="paymaya">
+                                <i class="fas fa-wallet"></i>
+                                <span>PayMaya</span>
+                            </label>
+                        </div>
+                        <div class="payment-option">
+                            <input type="radio" id="bank-transfer" name="payment-method" value="bank-transfer">
+                            <label for="bank-transfer">
+                                <i class="fas fa-university"></i>
+                                <span>Bank Transfer</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Mobile Wallet Payment -->
+                    <div id="mobile-wallet-payment" class="payment-details hidden">
+                        <h4>Mobile Wallet Payment</h4>
+                        <div class="payment-instructions">
+                            <p>Please send the downpayment amount to:</p>
+                            <div class="payment-info-box">
+                                <p><strong>Recipient:</strong> Wanam Sa Bukid Restaurant</p>
+                                <p><strong>Account Number:</strong> 0917-123-4567</p>
+                                <p><strong>Amount:</strong> ₱<span id="mobile-amount">0.00</span></p>
+                                <p><strong>Description:</strong> Reservation <span id="reservation-id-mobile">-</span></p>
+                            </div>
+                            <p>After payment, upload a screenshot of the transaction:</p>
+                            <div class="form-group">
+                                <label for="payment-screenshot">Upload Payment Screenshot</label>
+                                <input type="file" id="payment-screenshot" accept="image/*" required>
+                                <small>Must show amount, recipient, timestamp, and reservation ID</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bank Transfer Payment -->
+                    <div id="bank-transfer-payment" class="payment-details hidden">
+                        <h4>Bank Transfer Payment</h4>
+                        <div class="payment-instructions">
+                            <p>Please transfer the downpayment amount to our bank account:</p>
+                            <div class="payment-info-box">
+                                <p><strong>Bank Name:</strong> BDO (Banco de Oro)</p>
+                                <p><strong>Account Name:</strong> Wanam Sa Bukid Restaurant</p>
+                                <p><strong>Account Number:</strong> 123-456-7890</p>
+                                <p><strong>Amount:</strong> ₱<span id="bank-amount">0.00</span></p>
+                            </div>
+                            <div class="form-group">
+                                <label for="transaction-ref">Transaction Reference Number</label>
+                                <input type="text" id="transaction-ref" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bank-name">Bank Name</label>
+                                <input type="text" id="bank-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="amount-paid">Amount Paid</label>
+                                <input type="number" id="amount-paid" step="0.01" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="payment-date">Payment Date</label>
+                                <input type="date" id="payment-date" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="back-btn">Back</button>
+                    <button type="button" id="submit-payment" class="submit-btn">Submit Payment</button>
+                </div>
+            </section>
+
+            <!-- Confirmation Section -->
+            <section id="confirmation-section" class="booking-form hidden">
+                <div class="confirmation-message">
+                    <i class="fas fa-check-circle"></i>
+                    <h2>Booking Confirmed!</h2>
+                    <p>Your reservation has been submitted successfully.</p>
+                    <div class="confirmation-details">
+                        <p><strong>Booking ID:</strong> <span id="confirmed-booking-id">-</span></p>
+                        <p><strong>Reservation Date:</strong> <span id="confirmed-date">-</span></p>
+                        <p><strong>Payment Deadline:</strong> <span id="confirmed-deadline">-</span></p>
+                        <p class="note">You have 30 minutes to modify your reservation before it's finalized.</p>
+                    </div>
+                    <button id="new-booking" class="submit-btn">Make Another Booking</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="bookingweb.js"></script>
+</body>
+</html>
