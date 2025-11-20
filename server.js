@@ -10,6 +10,13 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
+// Serve static files
+app.use(express.static(__dirname));
+
+// Route for booking page
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'bookingweb.html'));
+});
 // Database configuration
 const config = {
     server: process.env.DB_SERVER || 'localhost',
@@ -1933,4 +1940,5 @@ function showDevelopmentVerification(email, token, fullname) {
     
     fs.writeFileSync('verification-test.html', testPage);
     console.log('📄 Test page created: verification-test.html');
+
 }
